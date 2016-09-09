@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app>
+<head>
+<meta charset="utf-8">
+<title>AngularJS incremental search demo</title>
+<script src="../lib/angular.min.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+<div data-ng-controller="MainCtrl">
+  <input type="search" placeholder="Search" ng-model="search">
+  <ul ng-repeat="person in people | filter:search">
+    <li>{{person.firstName}} {{person.lastName}}</li>
+  </ul>
+</div>
+</body>
+</html>
