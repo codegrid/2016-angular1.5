@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS scope demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>コントローラーのスコープのデモ</h2>
+
+<div ng-controller="FirstCtrl">
+  <input type="text" ng-model="name">
+  <div>Hello {{name}}!</div>
+</div>
+
+<div ng-controller="SecondCtrl">
+  <input type="text" ng-model="name">
+  <div>Hello {{name}}!</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('FirstCtrl', function($scope) {
+});
+
+app.controller('SecondCtrl', function($scope) {
+});
+</script>
+
+</body>
+</html>

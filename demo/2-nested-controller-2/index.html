@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS scope demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>コントローラーのスコープのデモ</h2>
+
+<div ng-controller="ParentCtrl">
+  <input type="text" ng-model="name">
+  <div ng-controller="ChildCtrl">
+    <input type="text" ng-model="name">
+    <div>Hello {{name}}!</div>
+  </div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('ParentCtrl', function($scope) {
+});
+
+app.controller('ChildCtrl', function($scope) {
+});
+</script>
+
+</body>
+</html>

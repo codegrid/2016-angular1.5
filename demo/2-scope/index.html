@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS $scope demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>$scopeのデモ</h2>
+
+<div ng-controller="MainCtrl">
+  <input type="text" ng-model="name">
+  <div>Hello {{name}}!</div>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('MainCtrl', function($scope) {
+  $scope.name = 'hokaccha';
+});
+</script>
+
+</body>
+</html>
