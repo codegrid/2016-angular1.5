@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS $scope handler demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ウィンドウのサイズを表示するデモ（動かない例）</h2>
+
+<div ng-controller="MainCtrl as vm">
+  ※ブラウザの大きさを変えて見てみてください<br>
+  Window size: {{vm.windowWidth}} x {{vm.windowHeight}}
+</div>
+
+<script>
+angular
+  .module('myApp', [])
+  .controller('MainCtrl', function($window) {
+    var vm = this;
+
+    vm.windowWidth  = $window.innerWidth;
+    vm.windowHeight = $window.innerHeight;
+
+    $window.onresize = function() {
+      console.log('w: ' + $window.innerWidth, 'h:' + $window.innerHeight);
+      vm.windowWidth  = $window.innerWidth;
+      vm.windowHeight = $window.innerHeight;
+    };
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS $scope handler demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>$watchと$watchCollectionの動きを見るデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <div>
+    <h3>vm.objに直接値を代入する場合</h3>
+    vm.obj =
+    <input type="text" ng-model="vm.change1" ng-change="vm.onChange1()">
+  </div>
+  <div>
+    <h3>vm.objに要素を追加する場合</h3>
+    vm.obj.push(
+    <input type="text" ng-model="vm.change2" ng-change="vm.onChange2()">
+    )
+  </div>
+  <div>
+    <h3>vm.objの要素のプロパティを変更する場合</h3>
+    vm.obj[0].value =
+    <input type="text" ng-model="vm.change3" ng-change="vm.onChange3()">
+  </div>
+  <hr>
+  <table>
+    <tr>
+      <td>$watch</td>
+      <td>{{vm.stringifyObj1}}</td>
+    </tr>
+    <tr>
+      <td>$watch(第三引数true)</td>
+      <td>{{vm.stringifyObj2}}</td>
+    </tr>
+    <tr>
+      <td>$watchCollection</td>
+      <td>{{vm.stringifyObj3}}</td>
+    </tr>
+  </table>
+  <hr>
+  <button ng-click="vm.onReset()">リセット</button>
+</div>
+
+<script>
+angular
+  .module('myApp', [])
+  .controller('MainCtrl', function($scope) {
+    var vm = this;
+    var obj = [
+      { value: 'initial' }
+    ];
+    vm.obj = angular.copy(obj);
+
+    vm.onReset = function() {
+      vm.obj = angular.copy(obj);
+      vm.change1 = vm.change2 = vm.change3 = '';
+    };
+
+    vm.onChange1 = function() {
+      vm.obj = vm.change1;
+    };
+    vm.onChange2 = function() {
+      vm.obj.push(vm.change2);
+    };
+    vm.onChange3 = function() {
+      vm.obj[0].value = vm.change3;
+    };
+
+    $scope.$watch('vm.obj', function(newVal) {
+      vm.stringifyObj1 = JSON.stringify(newVal);
+    });
+    $scope.$watch('vm.obj', function(newVal) {
+      vm.stringifyObj2 = JSON.stringify(newVal);
+    }, true);
+    $scope.$watchCollection('vm.obj', function(newVal) {
+      vm.stringifyObj3 = JSON.stringify(newVal);
+    }, true);
+  });
+</script>
+
+</body>
+</html>
+
+

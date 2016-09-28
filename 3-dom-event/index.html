@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS $scope handler demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>コントローラー設定したハンドラが実行されるデモ</h2>
+
+<div ng-controller="MainCtrla as vm">
+  <input type="text" ng-model="vm.name">
+  <button ng-click="vm.onClickBtn()">reverse</button>
+  <div>Hello {{vm.name}}!</div>
+</div>
+
+<script>
+angular
+  .module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.name = 'hokaccha';
+
+    vm.onClickBtn = function() {
+      // 文字列を反対にする
+      vm.name = vm.name.split('').reverse().join('');
+    };
+  });
+</script>
+
+</body>
+</html>

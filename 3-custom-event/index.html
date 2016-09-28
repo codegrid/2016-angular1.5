@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS $scope handler demo</title>
+<script src="../lib/angular.min.js"></script>
+</head>
+<body>
+
+<h2>カスタムイベントが実行されるデモ</h2>
+
+<div ng-controller="MainCtrl as main">
+  Hello {{main.fullName}}!
+  <div ng-controller="FirstCtrl as first">
+    Your first name:
+    <input type="text" ng-model="first.name" ng-change="first.onChange()">
+  </div>
+  <div ng-controller="LastCtrl as last">
+    Your last name:
+    <input type="text" ng-model="last.name" ng-change="last.onChange()">
+  </div>
+</div>
+
+<script>
+angular
+  .module('myApp', [])
+  .controller('MainCtrl', function($scope) {
+    var vm = this;
+    var _firstName = '';
+    var _lastName  = '';
+
+    vm.fullName = '';
+
+    $scope.$on('changed:firstName', function(e, name) {
+      _firstName = name;
+      vm.fullName = _firstName + ' ' + _lastName;
+    });
+
+    $scope.$on('changed:lastName', function(e, name) {
+      _lastName = name;
+      vm.fullName = _firstName + ' ' + _lastName;
+    });
+  })
+  .controller('FirstCtrl', function($scope) {
+    var vm = this;
+    vm.name = '';
+
+    vm.onChange = function() {
+      $scope.$emit('changed:firstName', vm.name);
+    };
+  })
+  .controller('LastCtrl', function($scope) {
+    var vm = this;
+    vm.name = '';
+
+    vm.onChange = function() {
+      $scope.$emit('changed:lastName', vm.name);
+    };
+  });
+</script>
+
+</body>
+</html>
