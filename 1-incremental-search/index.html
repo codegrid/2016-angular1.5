@@ -1,13 +1,24 @@
 <!DOCTYPE html>
-<html lang="ja" ng-app>
+<html lang="ja" ng-app="myApp">
 <head>
 <meta charset="utf-8">
 <title>AngularJS incremental search demo</title>
-<script src="../lib/angular.min.js"></script>
-<script src="app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 </head>
 <body>
-<div data-ng-controller="MainCtrl">
+<script>
+  angular.module('myApp', [])
+    .controller('MainCtrl', function($scope) {
+      $scope.people = [
+        { firstName: 'Kazuhito', lastName: 'Hokamura' },
+        { firstName: 'Takeshi',  lastName: 'Takatsudo' },
+        { firstName: 'Akihiro',  lastName: 'Oyamada' },
+        { firstName: 'Kazunori',  lastName: 'Tokuda' },
+        { firstName: 'Yukihisa',  lastName: 'Yamada' },
+      ];
+    });
+</script>
+<div ng-controller="MainCtrl">
   <input type="search" placeholder="Search" ng-model="search">
   <ul ng-repeat="person in people | filter:search">
     <li>{{person.firstName}} {{person.lastName}}</li>
