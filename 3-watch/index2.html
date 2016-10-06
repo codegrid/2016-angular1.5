@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>AngularJS $scope handler demo</title>
-<script src="../lib/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 </head>
 <body>
 
@@ -12,17 +12,20 @@
 <div ng-controller="MainCtrl as vm">
   <div>
     <h3>vm.objに直接値を代入する場合</h3>
+    <p>※$watch、$watch(第三引数true)、$watchCollection、それぞれの行に反映される</p>
     vm.obj =
     <input type="text" ng-model="vm.change1" ng-change="vm.onChange1()">
   </div>
   <div>
     <h3>vm.objに要素を追加する場合</h3>
+    <p>※$watch(第三引数true)と$watchCollectionの行に反映される</p>
     vm.obj.push(
     <input type="text" ng-model="vm.change2" ng-change="vm.onChange2()">
     )
   </div>
   <div>
     <h3>vm.objの要素のプロパティを変更する場合</h3>
+    <p>※$watch(第三引数true)の行にのみ反映される</p>
     vm.obj[0].value =
     <input type="text" ng-model="vm.change3" ng-change="vm.onChange3()">
   </div>
