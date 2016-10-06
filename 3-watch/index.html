@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>AngularJS $scope handler demo</title>
-<script src="../lib/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 </head>
 <body>
 
 <h2>変数の変更を検知するデモ</h2>
 
-<div ng-controller="MainCtrl as vm">
-  Hello {{vm.fullName}}!
+<div ng-controller="MainCtrl as main">
+  Hello {{main.fullName}}!
   <div>
     Your first name:
-    <input type="text" ng-model="vm.name.first">
+    <input type="text" ng-model="main.name.first">
   </div>
   <div>
     Your last name:
-    <input type="text" ng-model="vm.name.last">
+    <input type="text" ng-model="main.name.last">
   </div>
 </div>
 
@@ -32,17 +32,36 @@ angular
       last:  ''
     };
 
-    $scope.$watch('vm.name.first', function(newVal, oldVal) {
+    $scope.$watch('main.name.first', function(newVal, oldVal) {
       if(newVal === oldVal) return;
       console.log('First name changed from ' + oldVal + ' to ' + newVal);
       vm.fullName = vm.name.first + ' ' + vm.name.last;
     });
 
-    $scope.$watch('vm.name.last', function(newVal, oldVal) {
+    $scope.$watch('main.name.last', function(newVal, oldVal) {
       if(newVal === oldVal) return;
       console.log('Last name changed from ' + oldVal + ' to ' + newVal);
       vm.fullName = vm.name.first + ' ' + vm.name.last;
     });
+
+    //
+    // 次のように書くこともできます
+    //
+    //$scope.$watch(function() {
+    //  return vm.name.first;
+    //}, function(newval, oldval) {
+    //  if(newval === oldval) return;
+    //  console.log('first name changed from ' + oldval + ' to ' + newval);
+    //  vm.fullname = vm.name.first + ' ' + vm.name.last;
+    //});
+
+    //$scope.$watch(function() {
+    //  return vm.name.last;
+    //}, function(newval, oldval) {
+    //  if(newval === oldval) return;
+    //  console.log('last name changed from ' + oldval + ' to ' + newval);
+    //  vm.fullname = vm.name.first + ' ' + vm.name.last;
+    //});
   });
 </script>
 
