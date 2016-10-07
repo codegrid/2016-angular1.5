@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app>
+<head>
+<meta charset="utf-8">
+<title>AngularJS ng-class demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<style>
+.red {
+  color: red;
+}
+.blue {
+  color: blue;
+}
+</style>
+</head>
+<body>
+
+<h2>ng-class sample</h2>
+
+<input type="number" ng-model="num">
+<div ng-class="{ red: num === 100, blue: num === 50 }">1 + {{num}} = {{1 + num}}</div>
+
+</body>
+</html>

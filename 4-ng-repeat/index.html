@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS ng-repeat</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ng-repeat</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <ul ng-repeat="name in vm.names">
+    <li>{{name}}</li>
+  </ul>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.names = [
+      'Kazuhito Hokamura',
+      'Takeshi Takatsudo',
+      'Akihiro Oyamada',
+      'Kazunori Tokuda',
+      'Yukihisa Yamada',
+    ];
+  });
+</script>
+
+</body>
+</html>
