@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS dateフィルタ demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>dateフィルタのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  {{ vm.now | date:'yyyy年MM月dd日 HH時mm分ss秒' }}
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.now = new Date();
+  });
+</script>
+
+</body>
+</html>

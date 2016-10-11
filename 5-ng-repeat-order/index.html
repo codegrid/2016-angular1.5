@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS ng-repeatの並び替え</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ng-repeatの並び替え</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <div>
+    並び順：
+    <input type="radio" name="order" ng-model="vm.order" value="name">名前
+    <input type="radio" name="order" ng-model="vm.order" value="age">年齢
+  </div>
+
+  <div>
+    逆にする：<input type="checkbox" ng-model="vm.reverse">
+  </div>
+
+  <ul ng-repeat="person in vm.people | orderBy:vm.order:vm.reverse">
+    <li>{{person.name}} ({{person.age}})</li>
+  </ul>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.order = 'name';
+
+    vm.people = [
+      { name: 'Kazuhito Hokamura', age: 30 },
+      { name: 'Takeshi Takatsudo', age: 31 },
+      { name: 'Akihiro Oyamada', age: 31 },
+      { name: 'Kazunori Tokuda', age: 30 },
+      { name: 'Yukihisa Yamada', age: 28 }
+    ];
+  });
+</script>
+
+</body>
+</html>

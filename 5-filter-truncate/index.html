@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS dateフィルタ demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>truncateフィルタのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <div>{{ vm.name | truncate }}</div>
+  <div>{{ vm.name | truncate:4 }}</div>
+  <div>{{ vm.name | truncate:4:'・・・' }}</div>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .filter('truncate', function() {
+    return function(input, length, suffix) {
+      // デフォルトでは10文字で切る
+      if (length === undefined) {
+        length = 10;
+      }
+
+      // デフォルトの末尾文字は`...`
+      if (suffix === undefined) {
+        suffix = '...';
+      }
+
+      // 入力文字列が`length`より短かったらそのまま入力を返す
+      if (input.length <= length) {
+        return input;
+      }
+
+      // `lengthの長さで切って末尾文字くっつけて返す
+      return input.substring(0, length) + suffix;
+    };
+  })
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.name = 'hokaccha';
+  });
+</script>
+
+</body>
+</html>

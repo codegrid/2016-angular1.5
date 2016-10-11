@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS カスタムフィルタ demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>カスタムフィルタのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <input type="text" ng-model="vm.name">
+  <pre>{{ vm.name | reverse }}</pre>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .filter('reverse', function() {
+    return function(input) {
+      // 入力が文字列じゃなかったら空文字を返す
+      if (typeof input !== 'string') return '';
+
+      // 入力文字列を逆にして返す
+      return input.split('').reverse().join('');
+    };
+  })
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.name = 'hokaccha';
+  });
+</script>
+
+</body>
+</html>
