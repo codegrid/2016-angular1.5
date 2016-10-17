@@ -12,7 +12,7 @@
 <div ng-controller="MainCtrl as vm">
   <div>{{ vm.name | truncate }}</div>
   <div>{{ vm.name | truncate:4 }}</div>
-  <div>{{ vm.name | truncate:4:'・・・' }}</div>
+  <div>{{ vm.name | truncate:4:'（省略）' }}</div>
 </div>
 
 <script>
