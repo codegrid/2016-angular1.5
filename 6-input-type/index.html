@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS input Directive demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>inputディレクティブのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <p>
+    input[type="text"]: <input type="text" ng-model="vm.text">
+  </p>
+  <p>
+    input[type="radio"]
+    <label><input type="radio" ng-model="vm.radio" value="A"> A</label>
+    <label><input type="radio" ng-model="vm.radio" value="B"> B</label>
+  </p>
+  <p>
+    input[type="checkbox"]
+    <label><input type="checkbox" ng-model="vm.checkbox.isCheckA"> A</label>
+    <label><input type="checkbox" ng-model="vm.checkbox.isCheckB"> B</label>
+    <label><input type="checkbox" ng-model="vm.checkbox.isCheckC"> C</label>
+  </p>
+  <p>
+    input[type="number"]
+    <input type="number" ng-model="vm.number">
+  </p>
+  <p>
+    input[type="email"]
+    <input type="email" ng-model="vm.email">
+  </p>
+  <p>
+    input[type="url"]
+    <input type="url" ng-model="vm.url">
+  </p>
+  <p>
+    input[type="date"]
+    <input type="date" ng-model="vm.date">
+  </p>
+  <p>
+    input[type="datetime-local"]
+    <input type="datetime-local" ng-model="vm.datetimeLocal">
+  </p>
+  <p>
+    input[type="time"]
+    <input type="time" ng-model="vm.time">
+  </p>
+  <p>
+    input[type="month"]
+    <input type="month" ng-model="vm.month">
+  </p>
+  <p>
+    input[type="week"]
+    <input type="week" ng-model="vm.week">
+  </p>
+
+  <table>
+    <tr>
+      <th>input[type="text"]</th>
+      <td>{{vm.text}}</td>
+    </tr>
+    <tr>
+      <th>input[type="radio"]</th>
+      <td>{{vm.radio}}</td>
+    </tr>
+    <tr>
+      <th>input[type="checkbox"]</th>
+      <td>
+        A: {{vm.checkbox.isCheckA}}<br>
+        B: {{vm.checkbox.isCheckB}}<br>
+        C: {{vm.checkbox.isCheckC}}
+      </td>
+    </tr>
+    <tr>
+      <th>input[type="number"]</th>
+      <td>{{vm.number}}</td>
+    </tr>
+    <tr>
+      <th>input[type="email"]</th>
+      <td>{{vm.email}}</td>
+    </tr>
+    <tr>
+      <th>input[type="url"]</th>
+      <td>{{vm.url}}</td>
+    </tr>
+    <tr>
+      <th>input[type="date"]</th>
+      <td>{{vm.date}}</td>
+    </tr>
+    <tr>
+      <th>input[type="datetime-local"]</th>
+      <td>{{vm.datetimeLocal}}</td>
+    </tr>
+    <tr>
+      <th>input[type="time"]</th>
+      <td>{{vm.time}}</td>
+    </tr>
+    <tr>
+      <th>input[type="month"]</th>
+      <td>{{vm.month}}</td>
+    </tr>
+    <tr>
+      <th>input[type="week"]</th>
+      <td>{{vm.week}}</td>
+    </tr>
+  </table>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function($scope) {
+    var vm = this;
+    angular.extend(vm, {
+      text: 'text',
+      radio: 'A',
+      checkbox: {
+        isCheckA: true,
+        isCheckB: false,
+        isCheckC: false
+      },
+      number: 1,
+      email: 'aaa@example.com',
+      url: 'http://example.com/',
+      date: new Date(),
+      datetimeLocal: new Date(),
+      time: new Date(),
+      month: new Date(),
+      week: new Date(),
+    });
+
+    $scope.$watch(() => { return vm; }, () => console.log(vm), true);
+  });
+</script>
+
+</body>
+</html>
+

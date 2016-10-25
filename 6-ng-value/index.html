@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS ngValue demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ngValueのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <ul>
+    <li ng-repeat="food in vm.foods">
+      <label>
+        <input type="radio" ng-model="vm.selected" ng-value="food">{{food}}
+      </label>
+    </li>
+  </ul>
+  <p>Selected: {{vm.selected}}</p>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.foods = [ 'beef', 'pork', 'chicken' ];
+    vm.selected = 'beef';
+  });
+</script>
+
+</body>
+</html>

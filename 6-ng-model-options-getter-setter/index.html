@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS ngModelOptions demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ngModelOptions - getterSetterのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <input type="text" ng-model-options="{ getterSetter: true }" ng-model="vm.model">
+  <p>Model: {{vm.model()}}</p>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    var _model = 'initial';
+    vm.model: function(newVal) {
+      return (newVal !== undefined) ? (_model = newVal.trim()) : _model;
+    };
+  });
+</script>
+
+</body>
+</html>

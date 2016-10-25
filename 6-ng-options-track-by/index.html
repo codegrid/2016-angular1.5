@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS select / ngOptions demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>selectのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <select ng-options="food.label for food in vm.foods track by food.price" ng-model="vm.selected"></select>
+  <p>Selected: {{vm.selected}}</p>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.foods = [
+      {
+        price: 1000,
+        name: 'beef',
+        label: '牛肉',
+      },
+      {
+        price: 200,
+        name: 'pork',
+        label: '豚肉',
+      },
+      {
+        price: 300,
+        name: 'chicken',
+        label: '鶏肉',
+      },
+    ];
+    vm.selected = vm.foods[0];
+    vm.selected2 = 'beef';
+    vm.selected3 = vm.foods[0];
+  });
+</script>
+
+</body>
+</html>

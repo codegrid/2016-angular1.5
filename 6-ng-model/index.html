@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS ngModel demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ngModelのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <p>
+    名前: <input type="text" ng-model="vm.name">
+  </p>
+  <p>
+    <label><input type="radio" name="gender" ng-model="vm.gender" value="男性"> 男性</label>
+    <label><input type="radio" name="gender" ng-model="vm.gender" value="女性"> 女性</label>
+  </p>
+  <p>{{vm.name}}さんは{{vm.gender}}です</p>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.name = "Yota Uno";
+    vm.gender = "男性";
+  });
+</script>
+
+</body>
+</html>

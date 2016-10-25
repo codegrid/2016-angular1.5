@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS form demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>$pristine / $dirtyのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <form ng-submit="vm.submit()" name="myForm">
+    <label>名前: <input type="text" name="name" ng-model="vm.formData.name"></label><br>
+    <label>年齢: <input type="number" name="age" ng-model="vm.formData.age"></label><br>
+    <ul>
+      <li>$pristine: {{myForm.$pristine}}</li>
+      <li>$dirty: {{myForm.$dirty}}</li>
+    </ul>
+  </form>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.formData = {
+      name: 'Yota Uno',
+      age: undefined,
+    };
+
+    vm.submittedData = null;
+
+    vm.submit = function() {
+      vm.submittedData = angular.extend({}, vm.formData);
+    };
+  });
+</script>
+
+</body>
+</html>

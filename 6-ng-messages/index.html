@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS form demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.js"></script>
+</head>
+<body>
+
+<h2>ngMessageのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <form name="myForm">
+    <div ng-messages="myForm.$error">
+      <p ng-message="maxlength">入力値が長すぎます</p>
+      <p ng-message="minlength">入力値が短すぎます</p>
+      <p ng-message="required">必須項目が入力されていません</p>
+    </div>
+    <label>名前: <input type="text" name="name" ng-model="vm.formData.name" ng-minlength="4" ng-maxlength="8" required></label><br>
+    <p>$error: {{myForm.$error}}</p>
+  </form>
+</div>
+
+<script>
+angular.module('myApp', ['ngMessages'])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.formData = {
+      name: 'Yota Uno',
+    };
+  });
+</script>
+
+</body>
+</html>
