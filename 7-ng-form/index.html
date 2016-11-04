@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS form demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ngFormのデモ</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <form ng-submit="vm.submit()" name="parentForm">
+    <ng-form name="childFormA">
+      <label>名前: <input type="text" name="name" ng-model="vm.formData.name" required></label><br>
+      <label>年齢: <input type="number" name="age" ng-model="vm.formData.age" required></label><br>
+    </ng-form>
+    <ng-form name="childFormB">
+      <label>勤務先: <input type="text" name="company" ng-model="vm.formData.company" required></label><br>
+      <label>URL: <input type="url" name="url" ng-model="vm.formData.url" required></label>
+    </ng-form><br>
+    <button ng-disabled="parentForm.$invalid">Submit</button>
+    <ul>
+      <li>parentForm.$valid: {{parentForm.$valid}}</li>
+      <li>childFormA.$valid: {{childFormA.$valid}}</li>
+      <li>childFormB.$valid: {{childFormB.$valid}}</li>
+    </ul>
+  </form>
+</div>
+
+<script>
+angular.module('myApp', [])
+  .controller('MainCtrl', function() {
+    var vm = this;
+    vm.formData = {
+      name: 'Yota Uno',
+      age: undefined,
+      company: 'PixelGrid Inc.',
+      url: undefined,
+    };
+
+    vm.submit = function() {
+      console.log('submitted');
+    };
+  });
+</script>
+
+</body>
+</html>
+
