@@ -1,0 +1,32 @@
+[
+  {
+    "_id":  "521aec2bf445af0200000003",
+    "name": "高津戸 壮",
+    "body": "Web制作会社、フリーランスを経て、株式会社ピクセルグリッドに入社。数多くのWebサイト、WebアプリケーションのHTML、CSS、JavaScript実装に携わってきた。受託案件を中心にフロント周りの実装、設計、テクニカルディレクションを行う。スケーラビリティを考慮したHTMLテンプレート設計・実装、JavaScriptを使った込み入ったUIの設計・実装を得意分野とする。 ↵著書に『[改訂版 Webデザイナーのための jQuery入門](http://www.amazon.co.jp/gp/product/4774169447/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=4774169447&linkCode=as2&tag=pxgrid-22)』（技術評論社、2014年11月14日）がある。 ↵[CSS Nite 2011ベストセッション](http://cssnite.jp/archives/best-session2011.html)において、全170セッションの中から、ベスト10セッションに、[CSS Nite 2013ベストセッション]( http://cssnite.jp/archives/best-session2013.html )では、全278セッション中、ベスト20セッションに選出。",
+    "image": "//www.gravatar.com/avatar/a88cc23988f41bba5503dd0bd8ff7750.png"
+  },
+  {
+    "_id":  "521aec40f445af0200000004",
+    "name": "小山田 晃浩",
+    "body": "2006年よりWeb制作会社にてUI実装や運用業務を経験した後、2010年よりフロントエンド・エンジニアとして株式会社ピクセルグリッドに入社。これまでの経験の大半は大規模Webサイトの壊れにくいHTML/CSS設計、及び実装。また、SVG, Canvas, WebGLの扱いも得意としている。 ↵外部に向けたアウトプットも積極的に行っており、カンファレンスでの講演などを多数こなしている。<a href=\"http://tokyowebglmeetup.github.io/2/\">Tokyo WebGL Meetup</a>の主催者。2011年から2015年まで5連続で<a href=\"https://mvp.microsoft.com/en-us/PublicProfile/4032621?fullName=Akihiro%20Oyamada\">Microsoft MVP for IE</a>を受賞。 ↵著書に『<a href=\"http://www.amazon.co.jp/gp/product/4767811074/ref=as_li_ss_tl?ie=UTF8&amp;tag=pxgrid-22&amp;linkCode=as2&amp;camp=247&amp;creative=7399&amp;creativeASIN=4767811074\">Webデザイナー/コーダーのための HTML5コーディング入門</a>』（共著：エクスナレッジ、2011年3月12日）や『<a href=\"http://www.amazon.co.jp/gp/product/4839935467/ref=as_li_ss_tl?ie=UTF8&amp;tag=pxgrid-22&amp;linkCode=as2&amp;camp=247&amp;creative=7399&amp;creativeASIN=4839935467\">CSS3デザイン　プロフェッショナルガイド</a>』（共著：毎日コミュニケーションズ、2011年5月28日）』などがある。",
+    "image": "//www.gravatar.com/avatar/3d8d92b9ff9e708e3e4c247d5ab787ba.png"
+  },
+  {
+    "_id": "5331afa57a0f300200000004",
+    "name": "中島 直博",
+    "body": "JavaScriptとCSSへの興味から大学院を中退してWebの世界に飛び込む。大手デジタルコンテンツベンダーにてHTML、CSS、JavaScriptなどフロントエンド全般の担当として、主にスマートフォン向けゲームの開発に従事。2014年1月にフロントエンド・エンジニアとして株式会社ピクセルグリッドへ入社。スマートフォンサイトの実装を得意とする。 ↵また、在学中から<a href=\"http://html5j.org/\">html5j</a>のスタッフとして、さまざまな技術系勉強会の運営に関わり、<a href=\"http://html5experts.jp/\">HTML5 Experts.jp</a>のコントリビューターもつとめる。",
+    "image": "//www.gravatar.com/avatar/5713bf32ecfacfc3b921151a453cc18e"
+  },
+  {
+    "_id": "521aec96f445af0200000008",
+    "name": "山田 順久",
+    "body": "HTML・CSSのコーディング、後にJavaScriptの設計や実装を主業務として経験を積む。キャンペーンサイトやコーポレートサイトの、動きと操作性に工夫を凝らしたUI実装を多く手がけている。複雑なWebアプリケーション実装における、コンポーネント的な考え方を念頭においたJSの設計を得意とする。 ↵著書に『[JavaScriptエンジニア養成読本](http://www.amazon.co.jp/gp/product/B00QT9WFH2/ref=as_li_ss_tl?ie=UTF8&camp=247&creative=7399&creativeASIN=B00QT9WFH2&linkCode=as2&tag=pxgrid-22)』（共著：技術評論社、2014年12月11日）がある。",
+    "image": "//www.gravatar.com/avatar/4ff4a2c3f396dcabe05e0c768448f769"
+  },
+  {
+    "_id": "554c8358b18246030013f09a",
+    "name": "宇野 陽太",
+    "body": "大手ソフトウェアダウンロード販売会社、ソーシャルアプリケーションプロバイダーなどで、デザイナー、マークアップ・エンジニア、フロントエンド・エンジニアとして、主にスマートフォン向けゲームの開発に携わる。2015年1月に株式会社ピクセルグリッドに入社。 ↵MVCフレームワークを用いたJavaScriptの実装や、メンテナブルなCSSの設計を得意とする。",
+    "image": "//www.gravatar.com/avatar/3792ac740087333361496b858f1c1efb"
+  }
+]

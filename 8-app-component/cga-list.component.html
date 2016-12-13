@@ -1,0 +1,8 @@
+<ul>
+  <li ng-repeat="author in $ctrl.authors">
+    <a href="" ng-click="$ctrl.authorSelect(author._id)">{{author.name}}</a>
+  </li>
+</ul>
+
+<cga-detail author="$ctrl.selectedAuthor"></cga-detail>
+
