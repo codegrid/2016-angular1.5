@@ -14,7 +14,7 @@ angular.module('cga')
         vm.selectedAuthor = null;
 
         $http
-          .get('/authors.json')
+          .get('./authors.json')
           .then(function(res) {
             vm.authors = res.data;
           });
