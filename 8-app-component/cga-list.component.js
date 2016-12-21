@@ -4,7 +4,7 @@ angular.module('cga')
     controller: function CgaListCtrl($http) {
       var vm = this;
 
-      vm.authorSelect = function(id) {
+      vm.onSelectAuthor = function(id) {
         vm.selectedAuthor = vm.authors.filter(function(author) {
           return author._id === id;
         })[0];
