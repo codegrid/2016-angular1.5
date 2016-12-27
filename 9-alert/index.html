@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS my-alert directive demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js"></script>
+</head>
+<body>
+
+<button my-alert message="Alert Directive!">Click Me!</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.directive('myAlert', function($window) {
+  return {
+    link: function(scope, element, attrs) {
+      var message = attrs.message;
+
+      element.on('click', function() {
+        $window.alert(message);
+      });
+    }
+  };
+});
+</script>
+</body>
+</html>
+
