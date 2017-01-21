@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS directive demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<style>
+.my-btn {
+  color: #333;
+  background: #CCC;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.my-btn > i {
+  margin-right: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div ng-controller="MainCtrl as $ctrl">
+  <input ng-model="$ctrl.labelText">
+  <p><my-btn label-text="{{$ctrl.labelText}}"></my-btn></p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.directive('myBtn', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      label: '@labelText'
+    },
+    template: '<span class="my-btn">{{label}}</span>'
+  };
+});
+
+app.controller('MainCtrl', function() {
+  this.labelText = "編集";
+});
+</script>
+</body>
+</html>
+

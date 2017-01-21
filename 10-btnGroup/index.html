@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS directive demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<style>
+.my-btnGroup > span {
+  color: #333;
+  background: #CCC;
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 14px;
+  border: 1px solid #999;
+  border-left: none;
+  cursor: pointer;
+  float: left;
+}
+.my-btnGroup > span:first-child {
+  border-radius: 4px 0 0 4px;
+  border-left: 1px solid #999;
+}
+.my-btnGroup > span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.my-btnGroup > span.is-selected {
+  background: #AAA;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+</style>
+<body>
+
+<div ng-controller="MainCtrl as $ctrl">
+  <my-btn-group
+    labels="['btn1', 'btn2', 'btn3']"
+    on-select="$ctrl.showAlart(index, label)"
+  ></my-btn>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.directive('myBtnGroup', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      labels: '=',
+      onSelect: '&'
+    },
+    replace: true,
+    template:
+      '<span class="my-btnGroup">' +
+      '  <span' +
+      '    ng-repeat="label in labels"' +
+      '    ng-class="{ \'is-selected\': $index === currentIndex }"' +
+      '    ng-click="select($index, label)"' +
+      '  >{{label}}</span>' +
+      '</span>',
+    link: function(scope, element) {
+      scope.currentIndex = 0;
+
+      scope.select = function($index, label) {
+        scope.currentIndex = $index;
+        scope.onSelect({ index: $index, label: label });
+      };
+    }
+  };
+});
+
+app.controller('MainCtrl', function() {
+  this.showAlart = function(index, label) {
+    alert('index: ' + index + ', label: ' + label);
+  };
+});
+</script>
+</body>
+</html>
