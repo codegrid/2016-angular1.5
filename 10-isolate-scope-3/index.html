@@ -33,12 +33,11 @@ app.directive('myBtn', function() {
     scope: {
       label: '='
     },
-    template: '<span class="my-btn">{{label}}</span>',
-    link: function(scope, element) {
-      element.on('click', function() {
+    template: '<span class="my-btn" ng-click="onClick()">{{label}}</span>',
+    link: function(scope) {
+      scope.onClick = function() {
         scope.label = '削除';
-        scope.$apply();
-      });
+      };
     }
   };
 });
