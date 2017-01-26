@@ -35,7 +35,7 @@
 <div ng-controller="MainCtrl as $ctrl">
   <my-btn-group
     labels="['btn1', 'btn2', 'btn3']"
-    on-select="$ctrl.showAlart(index, label)"
+    on-select="$ctrl.showAlert(index, label)"
   ></my-btn>
 </div>
 
@@ -70,7 +70,7 @@ app.directive('myBtnGroup', function() {
 });
 
 app.controller('MainCtrl', function() {
-  this.showAlart = function(index, label) {
+  this.showAlert = function(index, label) {
     alert('index: ' + index + ', label: ' + label);
   };
 });
