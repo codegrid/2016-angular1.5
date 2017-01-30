@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS directive demo</title>
+<style>
+.my-btnGroup > span {
+  color: #333;
+  background: #CCC;
+  display: inline-block;
+  padding: 10px 30px;
+  font-size: 14px;
+  border: 1px solid #999;
+  border-left: none;
+  cursor: pointer;
+  float: left;
+}
+.my-btnGroup > span:first-child {
+  border-radius: 4px 0 0 4px;
+  border-left: 1px solid #999;
+}
+.my-btnGroup > span:last-child {
+  border-radius: 0 4px 4px 0;
+}
+.my-btnGroup > span.is-selected {
+  background: #AAA;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.my-btnGroup::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-controller="MainCtrl as $ctrl">
+  <my-btn-group>
+    <my-btn label="btn1"></my-btn>
+    <my-btn label="btn2"></my-btn>
+    <my-btn label="btn3"></my-btn>
+  </my-btn-group>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.directive('myBtnGroup', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    transclude: true,
+    template: '<span class="my-btnGroup" ng-transclude></span>',
+    controller: function($scope, $element, $attrs) {
+      var btns = [];
+
+      // 子要素を追加する
+      this.addBtn = function(btn) {
+        btns.push(btn);
+      };
+
+      // 指定の子要素を選択状態にする
+      this.select = function(btn) {
+        btns.forEach(function(btn) {
+          btn.selected = false;
+        });
+
+        btn.selected = true;
+      };
+    }
+  };
+});
+
+app.directive('myBtn', function() {
+  return {
+    restrict: 'E',
+    replace: true,
+    scope: {
+      label: '@'
+    },
+    require: '^myBtnGroup',
+    template:
+      '<span ' +
+      '  class="my-btn"' +
+      '  ng-class="{\'is-selected\': selected}"' +
+      '>{{label}}</span>',
+    link: function(scope, element, attrs, myBtnGroupCtrl) {
+      myBtnGroupCtrl.addBtn(scope);
+
+      element.on('click', function() {
+        myBtnGroupCtrl.select(scope);
+        scope.$apply();
+      });
+    }
+  };
+});
+
+app.controller('MainCtrl', function($scope) {
+});
+</script>
+</body>
+</html>
+

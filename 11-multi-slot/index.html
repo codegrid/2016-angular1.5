@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS directive demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.dialog {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.dialog-content {
+  background: #FFF;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+</style>
+<body>
+
+<div ng-controller="MainCtrl as $ctrl">
+  <button ng-click="$ctrl.openDialog()">open</button>
+
+  <my-dialog open="$ctrl.isDialogOpened">
+    <my-dialog-title>ダイアログタイトル</my-dialog-title>
+    <my-dialog-body>
+      <p>コンテンツ</p>
+      <p>コンテンツ</p>
+      <p>コンテンツ</p>
+      <p>コンテンツ</p>
+      <p>コンテンツ</p>
+    </my-dialog-body>
+  </my-dialog>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.directive('myDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {},
+    bindToController: {
+      'open': '='
+    },
+    transclude: {
+      titleSlot: 'myDialogTitle',
+      bodySlot: 'myDialogBody'
+    },
+    template:
+      '<div class="dialog" ng-show="$ctrl.open">' +
+      '  <div class="dialog-content">' +
+      '    <button ng-click="$ctrl.closeDialog()" class="dialog-close">close</button>' +
+      '    <div class="dialog-body">' +
+      '      <h2 ng-transclude="titleSlot" class="dialog-title"></h2>' +
+      '      <hr>' +
+      '      <div ng-transclude="bodySlot" class="dialog-body"></div>' +
+      '    </div>' +
+      '  </div>' +
+      '</div>',
+    controllerAs: '$ctrl',
+    controller: function() {
+      var vm = this;
+      vm.closeDialog = function() {
+        vm.open = false;
+      };
+    }
+  };
+});
+
+app.controller('MainCtrl', function() {
+  var vm = this;
+  vm.openDialog = function() {
+    vm.isDialogOpened = true;
+  };
+});
+</script>
+</body>
+</html>
+
