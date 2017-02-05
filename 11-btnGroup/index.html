@@ -86,14 +86,14 @@ app.directive('myBtn', function() {
       '<span ' +
       '  class="my-btn"' +
       '  ng-class="{\'is-selected\': selected}"' +
+      '  ng-click="clickButton()"' +
       '>{{label}}</span>',
     link: function(scope, element, attrs, myBtnGroupCtrl) {
       myBtnGroupCtrl.addBtn(scope);
 
-      element.on('click', function() {
+      scope.clickButton = function() {
         myBtnGroupCtrl.select(scope);
-        scope.$apply();
-      });
+      };
     }
   };
 });

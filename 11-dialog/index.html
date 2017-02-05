@@ -68,12 +68,17 @@ app.directive('myDialog', function() {
     template:
       '<div class="dialog" ng-show="$ctrl.open">' +
       '  <div class="dialog-content">' +
-      '    <button ng-click="open = false" class="dialog-close">close</button>' +
+      '    <button ng-click="$ctrl.closeDialog()" class="dialog-close">close</button>' +
       '    <div ng-transclude class="dialog-body"></div>' +
       '  </div>' +
       '</div>',
     controllerAs: '$ctrl',
-    controller: function() {}
+    controller: function() {
+      var vm = this;
+      vm.closeDialog = function() {
+        vm.open = false;
+      };
+    }
   };
 });
 
