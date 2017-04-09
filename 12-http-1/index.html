@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS $http</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>ng-repeat $http</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <ul ng-repeat="member in vm.members">
+    <li>{{member.name}}</li>
+  </ul>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('MainCtrl', function($scope, $http) {
+  var vm = this;
+  $http({ method: 'GET', url: './members.json' })
+    .then(function(res) {
+      vm.members = res.data;
+    }, function() {
+      // エラー処理
+    });
+});
+</script>
+
+</body>
+</html>
