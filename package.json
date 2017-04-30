@@ -1,0 +1,10 @@
+{
+  "name": "2016-angularjs",
+  "private": true,
+  "dependencies": {
+    "superstatic": "^4.0.3"
+  },
+  "scripts": {
+    "start": "superstatic . --port 8080"
+  }
+}
