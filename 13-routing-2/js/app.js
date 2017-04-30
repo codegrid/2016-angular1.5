@@ -11,7 +11,7 @@ angular.module('myApp', ['ngRoute'])
         controllerAs: 'vm',
         templateUrl:  'authors-info.controller.html'
       })
-      otherwise('/authors');
+      .otherwise('/authors');
 
     $locationProvider.html5Mode(false);
   });
