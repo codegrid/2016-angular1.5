@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS factory fetchMembers</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>factory fetchMembers</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <ul ng-repeat="member in vm.members">
+    <li>{{member.name}}: {{member.job}}</li>
+  </ul>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.constant('API_ENDPOINT', '.');
+
+app.factory('fetchMembers', function($http, API_ENDPOINT) {
+  return $http.get(API_ENDPOINT + '/members.json');
+});
+
+app.controller('MainCtrl', function(fetchMembers) {
+  var vm = this;
+  fetchMembers
+    .then(function(res) {
+      vm.members = res.data;
+    });
+});
+</script>
+
+</body>
+</html>

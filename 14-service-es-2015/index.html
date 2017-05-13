@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS service counter</title>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+<body>
+
+<h2>service</h2>
+
+<div ng-controller="MainCtrl as vm">
+  <p>{{vm.counter.count}}</p>
+  <p>
+    <button ng-click="vm.counter.increment()">+1</button>
+    <button ng-click="vm.counter.add(10)">+10</button>
+  </p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+class Counter {
+  constructor() {
+    this.count = 0;
+  }
+
+  increment() {
+    this.count++;
+  }
+
+  add(count) {
+    this.count += count;
+  }
+}
+
+app.service('counter', Counter);
+
+app.controller('MainCtrl', function(counter) {
+  this.counter = counter;
+});
+</script>
+
+</body>
+</html>
