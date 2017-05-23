@@ -1,0 +1,16 @@
+{
+  "name": "angularjs-unit-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "private": true,
+  "scripts": {
+    "test": "karma start"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0"
+  }
+}
