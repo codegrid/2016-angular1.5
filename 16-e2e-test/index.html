@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>AngularJS unit test demo</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="app.js"></script>
+</head>
+
+<body>
+  <div ng-controller="MainCtrl as vm">
+    <form ng-submit="vm.addMember()" class="addForm">
+      <input type="name" ng-model="vm.newName" placeholder="new member name">
+      <input type="submit" value="Add Member">
+    </form>
+
+    <ul class="membersList">
+      <li ng-repeat="member in vm.members">{{member.name}}</li>
+    </ul>
+  </div>
+</body>
+
+</html>
