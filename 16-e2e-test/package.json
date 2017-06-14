@@ -1,5 +1,5 @@
 {
-  "name": "angularjs-unit-test",
+  "name": "angularjs-e2e-test",
   "version": "1.0.0",
   "main": "index.js",
   "repository": {},
